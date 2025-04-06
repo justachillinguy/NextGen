@@ -2,9 +2,14 @@
 
 Hey coders 😁
 
-Feel free to explore, copy or give suggestions to the code!
+Feel free to explore, copy or give suggestions to my code!
 
-Thanks for all your support 😎
+Main Features:
+- Add to cart option
+- Dark/Light theme
+- Detailed view of products
+
+Thank you all for your support 😎
 
 @justchilling on Intigriti and Sololearn
 
@@ -21,7 +26,8 @@ Thanks for all your support 😎
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -1521,7 +1527,16 @@ Thanks for all your support 😎
                         <hr class="my-2">
                         <div class="d-flex justify-content-between h5 mb-0"><strong>Total:</strong><strong id="cartTotal">$0.00</strong></div>
                     </div>
-                    <button class="btn btn-success btn-lg" id="checkoutBtn" disabled>
+                    <button class="btn btn-success btn-lg" id="checkoutBtn" onclick='javascript:{
+                        swal({
+
+  title: "Payment Successful",
+  text: "Thanks for your simulated payment! 😁",
+  icon: "success",
+  button: "Ok",
+});
+
+                    }'>
                         <i class="fas fa-lock me-2"></i> Secure Checkout
                     </button>
                 </div>
@@ -1594,6 +1609,7 @@ Thanks for all your support 😎
                     themeToggleButton.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} theme`);
                 }
             };
+            
 
             const setupTheme = () => {
                 const initialTheme = getPreferredTheme();
