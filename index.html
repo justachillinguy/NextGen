@@ -8,6 +8,10 @@ Main Features:
 - Add to cart option
 - Dark/Light theme
 - Detailed view of products
+- Featured Product Badges & Sorting
+- Simulated Discount Prices & Sale Badges
+- Functional Brand Filtering
+- Functional Price/Featured Sorting
 
 Thank you all for your support 😎
 
@@ -26,8 +30,8 @@ Thank you all for your support 😎
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -49,6 +53,7 @@ Thank you all for your support 😎
             --success: #28a745;
             --danger: #dc3545;
             --warning: #ffc107;
+            --info: #17a2b8;
             --border-radius-sm: 0.3rem;
             --border-radius-md: 0.6rem;
             --border-radius-lg: 1rem;
@@ -179,6 +184,7 @@ Thank you all for your support 😎
              to{transform:scale3d(1,1,1)}
         }
 
+        /* Navbar Styles */
         .navbar {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
@@ -253,12 +259,13 @@ Thank you all for your support 😎
             right: -8px;
             border-radius: 50%;
             transition: transform 0.3s ease;
-            display: none;
+            display: none; /* Initially hidden */
         }
         .cart-counter.animate-pop {
             animation: pop 0.5s ease;
         }
 
+        /* Hero Section Styles */
         .hero {
             padding: 12vh 0;
             min-height: 75vh;
@@ -295,7 +302,7 @@ Thank you all for your support 😎
             margin-bottom: 1.5rem;
             text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
             color: white;
-            opacity: 0;
+            opacity: 0; /* Controlled by JS animation */
             max-width: 80%;
             margin-left: auto;
             margin-right: auto;
@@ -305,7 +312,7 @@ Thank you all for your support 😎
             margin-bottom: 2.5rem;
             opacity: 0.9;
             font-weight: 300;
-            opacity: 0;
+            opacity: 0; /* Controlled by JS animation */
             color: white;
             max-width: 90%;
             margin-left: auto;
@@ -327,7 +334,7 @@ Thank you all for your support 😎
             border-radius: 50px;
             transition: all var(--transition-speed) var(--transition-ease-out);
             box-shadow: 0 6px 20px rgba(255, 87, 51, 0.4);
-            opacity: 0;
+            opacity: 0; /* Controlled by JS animation */
             transform: scale(0.8);
             animation: scale-in 0.8s ease forwards 0.8s, pulse-cta 2.5s infinite ease-in-out 1.6s;
         }
@@ -339,6 +346,7 @@ Thank you all for your support 😎
             animation-play-state: paused;
         }
 
+        /* Shape Divider Styles */
         .shape-divider {
             position: relative;
             height: 100px;
@@ -360,6 +368,7 @@ Thank you all for your support 😎
             fill: var(--gray-900);
         }
 
+        /* Products Section Styles */
         .products-section {
             padding: 5rem 0;
             background-color: var(--gray-100);
@@ -401,6 +410,10 @@ Thank you all for your support 😎
              opacity: 0;
              transform: translateY(50px);
              transition: opacity 0.7s var(--transition-ease-out), transform 0.7s var(--transition-ease-out);
+             display: flex; /* Ensure wrapper takes space */
+             padding-left: var(--bs-gutter-x, 0.75rem);
+             padding-right: var(--bs-gutter-x, 0.75rem);
+             margin-bottom: var(--bs-gutter-y, 1.5rem);
          }
          .product-card-wrapper.is-visible {
              opacity: 1;
@@ -415,14 +428,39 @@ Thank you all for your support 😎
              overflow: hidden;
              display: flex;
              flex-direction: column;
-             height: 100%;
+             height: 100%; /* Make card fill the wrapper */
              position: relative;
              transform-style: preserve-3d;
+             width: 100%; /* Ensure card takes full width of wrapper */
          }
          .product-card:hover {
              box-shadow: 0 20px 45px rgba(0, 85, 255, 0.2);
              transform: translateY(-10px) perspective(1000px) rotateX(3deg) rotateY(-2deg);
          }
+         /* Badges (Sale/Featured) */
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--border-radius-md);
+            color: white;
+            z-index: 3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-sale {
+            left: 1rem;
+            background-color: var(--danger);
+        }
+        .badge-featured {
+            right: 1rem;
+            background-color: var(--info);
+        }
+        html[data-bs-theme="dark"] .badge-sale { background-color: var(--danger); }
+        html[data-bs-theme="dark"] .badge-featured { background-color: var(--info); }
+
          .product-image-wrapper {
              background-color: #ffffff;
              padding: 1.5rem;
@@ -465,12 +503,13 @@ Thank you all for your support 😎
              transition: all 0.5s var(--transition-ease-out);
              backdrop-filter: blur(5px);
              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-             pointer-events: none;
+             pointer-events: none; /* Prevent interaction when hidden */
+             z-index: 2; /* Above image, below badges */
          }
          .product-card:hover .quick-view-btn {
              opacity: 1;
              transform: translate(-50%, -50%) scale(1);
-             pointer-events: auto;
+             pointer-events: auto; /* Allow interaction when visible */
          }
          .quick-view-btn:hover {
              background-color: var(--primary-dark);
@@ -490,6 +529,7 @@ Thank you all for your support 😎
              margin-bottom: 0.8rem;
              color: var(--bs-emphasis-color);
              line-height: 1.3;
+             min-height: 3.9rem; /* Reserve space for 2 lines */
          }
         .feature-list {
             margin-bottom: 1rem;
@@ -533,6 +573,12 @@ Thank you all for your support 😎
              gap: 1rem;
              transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
          }
+         .product-price-container {
+             display: flex;
+             align-items: baseline;
+             gap: 0.5rem;
+             flex-wrap: wrap;
+         }
          .product-price {
              font-family: 'Roboto Mono', monospace;
              font-size: 1.5rem;
@@ -540,6 +586,14 @@ Thank you all for your support 😎
              color: var(--primary-dark);
              white-space: nowrap;
              transition: color var(--transition-speed) ease;
+         }
+         .original-price {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--bs-secondary-color);
+            text-decoration: line-through;
+            white-space: nowrap;
          }
          .product-actions .btn {
              font-size: 0.85rem;
@@ -557,6 +611,7 @@ Thank you all for your support 😎
             transition: background-color var(--transition-speed) ease;
         }
 
+        /* Footer Styles */
         .footer {
             background-color: var(--dark);
             color: var(--gray-300);
@@ -720,6 +775,7 @@ Thank you all for your support 😎
         }
         .footer-bottom a:hover { color: white; }
 
+        /* Modal Styles */
         .modal-content {
             border-radius: var(--border-radius-lg);
             border: none;
@@ -757,6 +813,7 @@ Thank you all for your support 😎
             transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
+        /* Cart Modal Specific Styles */
         .cart-item {
             background-color: white;
             border-radius: var(--border-radius-md);
@@ -884,6 +941,7 @@ Thank you all for your support 😎
             background: var(--gray-300);
         }
 
+        /* Quick View Modal Styles */
         #quickViewModal .modal-dialog {
             transition: transform 0.4s var(--transition-ease-out);
         }
@@ -947,13 +1005,25 @@ Thank you all for your support 😎
             transition: color var(--transition-speed) ease;
             flex-shrink: 0;
         }
+        .quick-view-price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
         .quick-view-price {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-dark);
-            margin-bottom: 1.5rem;
             font-family: 'Roboto Mono', monospace;
             transition: color var(--transition-speed) ease;
+        }
+        .quick-view-original-price {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--bs-secondary-color);
+            text-decoration: line-through;
         }
         .quick-view-actions { margin-top: auto; }
         .quick-view-add-to-cart {
@@ -962,6 +1032,7 @@ Thank you all for your support 😎
             font-size: 1rem;
         }
 
+        /* Fly to Cart Animation Element */
         .fly-to-cart-element {
             position: fixed;
             z-index: 1100;
@@ -975,8 +1046,10 @@ Thank you all for your support 😎
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+            border: 1px solid var(--bs-border-color); /* Added border */
         }
 
+        /* Theme Toggle Button */
         .theme-toggle-btn {
             border-radius: 50%;
             width: 40px;
@@ -1000,15 +1073,13 @@ Thank you all for your support 😎
             border-color: var(--bs-border-color);
             transform: scale(1.1) rotate(15deg);
         }
-        .theme-toggle-btn .fa-sun { display: none; }
-        .theme-toggle-btn .fa-moon { display: inline-block; }
+        .theme-toggle-btn .fa-sun { display: none; } /* Hidden in light mode */
+        .theme-toggle-btn .fa-moon { display: inline-block; } /* Shown in light mode */
 
-        html[data-bs-theme="dark"] body {
 
-        }
-        html[data-bs-theme="dark"] h1, html[data-bs-theme="dark"] h2, html[data-bs-theme="dark"] h3, html[data-bs-theme="dark"] h4, html[data-bs-theme="dark"] h5, html[data-bs-theme="dark"] h6 {
-
-        }
+        /* Dark Theme Overrides */
+        html[data-bs-theme="dark"] body {}
+        html[data-bs-theme="dark"] h1, html[data-bs-theme="dark"] h2, html[data-bs-theme="dark"] h3, html[data-bs-theme="dark"] h4, html[data-bs-theme="dark"] h5, html[data-bs-theme="dark"] h6 {}
         html[data-bs-theme="dark"] .navbar {
             background: rgba(17, 24, 39, 0.8);
             border-bottom-color: rgba(75, 85, 99, 0.5);
@@ -1087,6 +1158,7 @@ Thank you all for your support 😎
             background-color: rgba(17, 24, 39, 0.5);
         }
         html[data-bs-theme="dark"] .product-price { color: var(--primary-light); }
+        html[data-bs-theme="dark"] .original-price { color: var(--gray-500); }
         html[data-bs-theme="dark"] #about { background-color: var(--gray-900); }
         html[data-bs-theme="dark"] .footer {
             background-color: var(--gray-900);
@@ -1178,15 +1250,18 @@ Thank you all for your support 😎
         html[data-bs-theme="dark"] .quick-view-features li { color: var(--gray-500); }
         html[data-bs-theme="dark"] .quick-view-features i { color: var(--primary-light); }
         html[data-bs-theme="dark"] .quick-view-price { color: var(--primary-light); }
+        html[data-bs-theme="dark"] .quick-view-original-price { color: var(--gray-500); }
         html[data-bs-theme="dark"] .theme-toggle-btn { color: var(--gray-500); }
         html[data-bs-theme="dark"] .theme-toggle-btn:hover {
             background-color: var(--gray-300);
             border-color: var(--gray-500);
             color: var(--primary-light);
         }
-        html[data-bs-theme="dark"] .theme-toggle-btn .fa-sun { display: inline-block; }
-        html[data-bs-theme="dark"] .theme-toggle-btn .fa-moon { display: none; }
+        html[data-bs-theme="dark"] .theme-toggle-btn .fa-sun { display: inline-block; } /* Shown in dark mode */
+        html[data-bs-theme="dark"] .theme-toggle-btn .fa-moon { display: none; } /* Hidden in dark mode */
+        html[data-bs-theme="dark"] .fly-to-cart-element { border-color: var(--gray-300); }
 
+        /* Responsive Adjustments */
         @media (max-width: 991px) {
             body { padding-top: 75px; }
             .navbar { padding: 0.8rem 1rem; }
@@ -1211,6 +1286,7 @@ Thank you all for your support 😎
             .filter-controls .btn { padding: 0.4rem 1rem; font-size: 0.8rem; }
             .product-footer { flex-direction: row; align-items: center; }
             .product-price { font-size: 1.3rem; }
+            .original-price { font-size: 0.9rem; }
             .product-actions .btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
             .footer { padding: 5rem 0 1.5rem; }
             .footer::before { height: 60px; }
@@ -1224,7 +1300,7 @@ Thank you all for your support 😎
                 gap: 0.5rem;
                 padding: 1rem;
             }
-            .cart-item-image { display: none; }
+            .cart-item-image { display: none; } /* Hide image on small screens in cart */
             .cart-item-actions {
                 width: 100%;
                 display: flex;
@@ -1244,8 +1320,10 @@ Thank you all for your support 😎
             .quick-view-image { padding: 1rem; min-height: 250px; }
             .quick-view-details h3 { font-size: 1.5rem; }
             .quick-view-price { font-size: 1.5rem; }
+            .quick-view-original-price { font-size: 1.1rem; }
         }
 
+        /* Reduced Motion Preferences */
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             *, *::before, *::after {
@@ -1294,6 +1372,7 @@ Thank you all for your support 😎
         NextGen Mobiles - Latest Smartphones
     </h1>
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="#">NextGen</a>
@@ -1320,14 +1399,15 @@ Thank you all for your support 😎
                         <i class="fas fa-shopping-bag"></i> <span class="cart-counter">0</span>
                     </button>
                     <button class="btn theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i>
-                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i> <!-- Moon icon for light theme -->
+                        <i class="fas fa-sun"></i>  <!-- Sun icon for dark theme -->
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1 id="hero-heading" data-animation="text-reveal" style="max-width: 100%">Beyond Imagination</h1>
@@ -1336,39 +1416,46 @@ Thank you all for your support 😎
         </div>
     </section>
 
+    <!-- Shape Divider -->
     <div class="shape-divider" style="background-color: var(--gray-100);"> <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="opacity: 0.7; fill: var(--bs-body-bg);"> <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
          </svg>
          <svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="opacity: 1; fill: var(--bs-body-bg);"> <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.3-37.5C438.64,32.43,512.34,53.67,583.82,73.44c71.47,19.79,148.86,21.3,218.11,15.42,69.25-5.88,138.46-24.36,209.42-37.6C1079.72,31.23,1139.69,37.39,1200,46.29V0Z"></path>
          </svg>
     </div>
 
+    <!-- Products Section -->
     <section class="products-section" id="products">
         <div class="container">
             <h2 class="section-title animated-item slide-up" data-animation-type="slide-up">Meet the Lineup</h2>
             <p class="section-subtitle animated-item slide-up" data-delay="0.15">Choose the device that defines your future. Explore cutting-edge features and stunning aesthetics.</p>
 
+            <!-- Filter and Sort Controls -->
             <div class="filter-controls animated-item zoom-in" data-delay="0.3">
-                <button type="button" class="btn active">All Brands</button>
-                <button type="button" class="btn">Samsung</button>
-                <button type="button" class="btn">Apple</button>
-                <button type="button" class="btn">Google</button>
+                <button type="button" class="btn filter-btn active" data-filter="all">All Brands</button>
+                <button type="button" class="btn filter-btn" data-filter="Samsung">Samsung</button>
+                <button type="button" class="btn filter-btn" data-filter="Apple">Apple</button>
+                <button type="button" class="btn filter-btn" data-filter="Google">Google</button>
                 <div class="dropdown ms-md-auto">
                     <button class="btn dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Sort by: Featured
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                        <li><a class="dropdown-item" href="#">Featured</a></li>
-                        <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
-                        <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+                        <li><a class="dropdown-item sort-option active" href="#" data-sort="featured">Featured</a></li>
+                        <li><a class="dropdown-item sort-option" href="#" data-sort="price-asc">Price: Low to High</a></li>
+                        <li><a class="dropdown-item sort-option" href="#" data-sort="price-desc">Price: High to Low</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 product-card-wrapper">
-                    <div class="product-card" data-id="s25ultra" data-name="Samsung Galaxy S25 Ultra" data-price="1299" data-image="https://i.ibb.co/r20q9tvx/image-removebg-preview.png">
+            <!-- Product Grid -->
+            <div class="row g-4 justify-content-center" id="product-grid">
+                <!-- Product cards will be dynamically inserted here by JavaScript -->
+                <!-- Example Structure (used by JS for parsing initial data) -->
+                <div class="col-lg-4 col-md-6 product-card-wrapper d-none" data-id="s25ultra" data-name="Samsung Galaxy S25 Ultra" data-price="1299" data-image="https://i.ibb.co/r20q9tvx/image-removebg-preview.png" data-brand="Samsung" data-featured="true">
+                    <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img loading="lazy" src="https://i.ibb.co/r20q9tvx/image-removebg-preview.png" class="product-image" alt="Galaxy S25 Ultra"> <button class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+                            <img loading="lazy" src="https://i.ibb.co/r20q9tvx/image-removebg-preview.png" class="product-image" alt="Galaxy S25 Ultra">
+                            <button class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
                         </div>
                         <div class="product-content">
                             <h5>Samsung Galaxy S25 Ultra</h5>
@@ -1380,7 +1467,10 @@ Thank you all for your support 😎
                                 <span class="feature-bubble" data-icon="fa-hdd" data-text="1TB Storage"><i class="fas fa-hdd"></i> 1TB Storage</span>
                             </div>
                         </div>
-                        <div class="product-footer"> <span class="product-price">$1,299.00</span>
+                        <div class="product-footer">
+                            <div class="product-price-container">
+                                <span class="product-price">$1,299.00</span>
+                            </div>
                             <div class="product-actions">
                                 <button class="btn btn-sm btn-primary add-to-cart">
                                     Add <i class="fas fa-shopping-cart ms-1"></i>
@@ -1389,10 +1479,11 @@ Thank you all for your support 😎
                         </div>
                     </div>
                 </div>
-                 <div class="col-lg-4 col-md-6 product-card-wrapper">
-                     <div class="product-card" data-id="iphone16" data-name="iPhone 16 Pro Max" data-price="1199" data-image="https://i.ibb.co/3yXJ1LzK/image-removebg-preview-1.png">
+                 <div class="col-lg-4 col-md-6 product-card-wrapper d-none" data-id="iphone16" data-name="iPhone 16 Pro Max" data-price="1099" data-original-price="1199" data-image="https://i.ibb.co/3yXJ1LzK/image-removebg-preview-1.png" data-brand="Apple">
+                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img loading="lazy" src="https://i.ibb.co/3yXJ1LzK/image-removebg-preview-1.png" class="product-image" alt="iPhone 16 Pro Max"> <button class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+                            <img loading="lazy" src="https://i.ibb.co/3yXJ1LzK/image-removebg-preview-1.png" class="product-image" alt="iPhone 16 Pro Max">
+                            <button class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
                         </div>
                         <div class="product-content">
                             <h5>iPhone 16 Pro Max</h5>
@@ -1405,7 +1496,10 @@ Thank you all for your support 😎
                             </div>
                         </div>
                         <div class="product-footer">
-                            <span class="product-price">$1,199.00</span>
+                            <div class="product-price-container">
+                                <span class="product-price">$1,099.00</span>
+                                <span class="original-price">$1,199.00</span>
+                            </div>
                             <div class="product-actions">
                                 <button class="btn btn-sm btn-primary add-to-cart">
                                     Add <i class="fas fa-shopping-cart ms-1"></i>
@@ -1414,10 +1508,11 @@ Thank you all for your support 😎
                         </div>
                     </div>
                 </div>
-                 <div class="col-lg-4 col-md-6 product-card-wrapper">
-                    <div class="product-card" data-id="pixel9xl" data-name="Google Pixel 9 Pro XL" data-price="1099" data-image="https://i.ibb.co/Qvjy11KY/image-removebg-preview-2.png">
+                 <div class="col-lg-4 col-md-6 product-card-wrapper d-none" data-id="pixel9xl" data-name="Google Pixel 9 Pro XL" data-price="1099" data-image="https://i.ibb.co/Qvjy11KY/image-removebg-preview-2.png" data-brand="Google">
+                    <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img loading="lazy" src="https://i.ibb.co/Qvjy11KY/image-removebg-preview-2.png" class="product-image" alt="Pixel 9 Pro XL"> <button class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+                            <img loading="lazy" src="https://i.ibb.co/Qvjy11KY/image-removebg-preview-2.png" class="product-image" alt="Pixel 9 Pro XL">
+                            <button class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
                         </div>
                         <div class="product-content">
                             <h5>Google Pixel 9 Pro XL</h5>
@@ -1430,7 +1525,9 @@ Thank you all for your support 😎
                             </div>
                         </div>
                         <div class="product-footer">
-                            <span class="product-price">$1,099.00</span>
+                             <div class="product-price-container">
+                                <span class="product-price">$1,099.00</span>
+                            </div>
                             <div class="product-actions">
                                 <button class="btn btn-sm btn-primary add-to-cart">
                                     Add <i class="fas fa-shopping-cart ms-1"></i>
@@ -1443,6 +1540,7 @@ Thank you all for your support 😎
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="py-5">
         <div class="container text-center col-lg-8">
             <h2 class="section-title animated-item slide-up">Innovating Tomorrow</h2>
@@ -1451,6 +1549,7 @@ Thank you all for your support 😎
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer" id="contact">
         <div class="container">
             <div class="row g-5">
@@ -1505,20 +1604,23 @@ Thank you all for your support 😎
         </div>
     </footer>
 
-    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-modal="true" role="dialog"> <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="cartModalLabel"><i class="fas fa-shopping-bag me-2"></i> Your Cart</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Cart Modal"></button> </div>
                 <div class="modal-body">
                     <div id="cartItems">
+                        <!-- Cart items will be inserted here -->
                         <div class="text-center py-5" id="emptyCart">
                             <i class="fas fa-shopping-bag fa-4x text-muted mb-3"></i>
                             <h4 class="text-muted">Your bag is empty</h4>
                             <p class="text-muted">Looks like you haven't added anything yet.</p>
                             <button type="button" class="btn btn-primary mt-3 px-4" data-bs-dismiss="modal">Start Shopping</button>
                         </div>
-                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div id="cartTotals" class="flex-grow-1 me-3">
@@ -1529,13 +1631,11 @@ Thank you all for your support 😎
                     </div>
                     <button class="btn btn-success btn-lg" id="checkoutBtn" onclick='javascript:{
                         swal({
-
-  title: "Payment Successful",
-  text: "Thanks for your simulated payment! 😁",
-  icon: "success",
-  button: "Ok",
-});
-
+                            title: "Payment Successful",
+                            text: "Thanks for your simulated payment! 😁",
+                            icon: "success",
+                            button: "Ok",
+                        });
                     }'>
                         <i class="fas fa-lock me-2"></i> Secure Checkout
                     </button>
@@ -1544,7 +1644,9 @@ Thank you all for your support 😎
         </div>
     </div>
 
-    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewName" aria-modal="true" role="dialog"> <div class="modal-dialog modal-dialog-centered modal-xl">
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewName" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content overflow-hidden">
                  <button type="button" class="btn-close position-absolute top-0 end-0 p-3" style="z-index: 10;" data-bs-dismiss="modal" aria-label="Close Quick View"></button>
                 <div class="modal-body p-0">
@@ -1556,9 +1658,14 @@ Thank you all for your support 😎
                              <h3 id="quickViewName" class="modal-title">Product Name</h3>
                             <p class="text-muted"><small>SKU: <span id="quickViewId">N/A</span></small></p>
                             <ul class="quick-view-features list-unstyled" id="quickViewFeatures">
-                                </ul>
-                            <div class="quick-view-price" id="quickViewPrice">$0.00</div>
-                            <div class="quick-view-actions"> <button class="btn btn-primary btn-lg quick-view-add-to-cart w-100" id="quickViewAddToCartBtn">
+                                <!-- Features added dynamically -->
+                            </ul>
+                            <div class="quick-view-price-container">
+                                <div class="quick-view-price" id="quickViewPrice">$0.00</div>
+                                <div class="quick-view-original-price" id="quickViewOriginalPrice" style="display: none;">$0.00</div>
+                            </div>
+                            <div class="quick-view-actions">
+                                <button class="btn btn-primary btn-lg quick-view-add-to-cart w-100" id="quickViewAddToCartBtn">
                                     <i class="fas fa-cart-plus me-2"></i> Add to Cart
                                 </button>
                                 <button class="btn btn-outline-secondary w-100 mt-2" data-bs-dismiss="modal">Continue Shopping</button>
@@ -1570,6 +1677,7 @@ Thank you all for your support 😎
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
@@ -1578,7 +1686,10 @@ Thank you all for your support 😎
             const isReducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
             const htmlElement = document.documentElement;
             let cart = [];
+            let allProducts = []; // Holds all product data parsed from HTML
+            let currentlyDisplayedProducts = []; // Holds filtered/sorted products for rendering
 
+            // --- DOM Element Selectors ---
             const themeToggleButton = document.getElementById('theme-toggle-btn');
             const navbar = document.getElementById('mainNavbar');
             const cartCounters = document.querySelectorAll('.cart-counter');
@@ -1596,20 +1707,28 @@ Thank you all for your support 😎
             const qvName = document.getElementById('quickViewName');
             const qvId = document.getElementById('quickViewId');
             const qvFeatures = document.getElementById('quickViewFeatures');
+            const qvPriceContainer = document.querySelector('.quick-view-price-container');
             const qvPrice = document.getElementById('quickViewPrice');
+            const qvOriginalPrice = document.getElementById('quickViewOriginalPrice');
             const qvAddToCartBtn = document.getElementById('quickViewAddToCartBtn');
             const newsletterButton = document.getElementById('newsletter-button');
             const currentYearEl = document.getElementById('currentYear');
+            const productGrid = document.getElementById('product-grid');
+            const filterButtonsContainer = document.querySelector('.filter-controls');
+            const sortDropdown = document.getElementById('sortDropdown');
+            const sortOptionsContainer = document.querySelector('.dropdown-menu[aria-labelledby="sortDropdown"]');
 
+            // --- Utility Functions ---
+            const formatPrice = (price) => `$${Number(price).toFixed(2)}`;
             const getPreferredTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
+            // --- Theme Handling ---
             const setTheme = (theme) => {
                 htmlElement.setAttribute('data-bs-theme', theme);
                 if (themeToggleButton) {
                     themeToggleButton.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} theme`);
                 }
             };
-            
 
             const setupTheme = () => {
                 const initialTheme = getPreferredTheme();
@@ -1639,15 +1758,17 @@ Thank you all for your support 😎
                 });
             };
 
+            // --- Navbar Scroll Effect ---
             const setupNavbarScroll = () => {
                 if (!navbar || isReducedMotion) return;
                 const handleScroll = () => {
                     navbar.classList.toggle('scrolled', window.scrollY > 50);
                 };
                 window.addEventListener('scroll', handleScroll, { passive: true });
-                handleScroll();
+                handleScroll(); // Initial check
             };
 
+            // --- Hero Text Animation ---
             const splitTextAndWrap = (element) => {
                 if (!element || isReducedMotion) return;
                 const text = element.textContent.trim();
@@ -1660,17 +1781,17 @@ Thank you all for your support 😎
                     }
                 });
                 element.innerHTML = wrappedHTML.trim();
-                 element.style.opacity = 1;
+                 element.style.opacity = 1; // Make parent visible once content is wrapped
             };
 
             const animateTextChars = (selector, baseDelay = 0) => {
                 const parent = document.querySelector(selector);
                 if (!parent || isReducedMotion) {
-                     if(parent) parent.style.opacity = 1;
+                     if(parent) parent.style.opacity = 1; // Ensure visibility if no animation
                      return;
                 }
                 const chars = parent.querySelectorAll('.char');
-                 if (!chars.length) {
+                 if (!chars.length) { // Fallback if wrapping failed
                      parent.style.opacity = 1;
                      return;
                  }
@@ -1682,9 +1803,10 @@ Thank you all for your support 😎
                 });
             };
 
-             const setupHeroTextAnimation = () => {
+            const setupHeroTextAnimation = () => {
                  const heroHeading = document.querySelector('#hero-heading');
                  const heroSubheading = document.querySelector('#hero-subheading');
+                 const heroCta = document.querySelector('.hero .btn-cta');
 
                  if (heroHeading) splitTextAndWrap(heroHeading);
                  if (heroSubheading) splitTextAndWrap(heroSubheading);
@@ -1693,20 +1815,23 @@ Thank you all for your support 😎
                      setTimeout(() => {
                          if (heroHeading) animateTextChars('#hero-heading');
                          if (heroSubheading) animateTextChars('#hero-subheading', parseFloat(heroSubheading.dataset.delay || 0.3));
+                         // CTA animation is handled by CSS keyframes, just ensure parent is visible
+                         if(heroCta && heroCta.parentElement) heroCta.parentElement.style.opacity = 1;
                      }, 100);
                  } else {
+                      // If reduced motion, just make elements visible immediately
                       if(heroHeading) heroHeading.style.opacity = 1;
                       if(heroSubheading) heroSubheading.style.opacity = 1;
+                      if(heroCta) heroCta.style.opacity = 1;
                  }
              };
 
-            const formatPrice = (price) => `$${Number(price).toFixed(2)}`;
-
+            // --- Cart Functionality ---
             const animateCartCounter = () => {
                 if (isReducedMotion) return;
                 cartCounters.forEach(counter => {
                     counter.classList.remove('animate-pop');
-                    void counter.offsetWidth;
+                    void counter.offsetWidth; // Trigger reflow
                     counter.classList.add('animate-pop');
                 });
             };
@@ -1722,7 +1847,9 @@ Thank you all for your support 😎
                 if (cartItemsContainer && emptyCartMsg && cartSubtotalEl && cartTaxEl && cartTotalEl && checkoutBtn) {
                     const hasItems = cart.length > 0;
                     emptyCartMsg.style.display = hasItems ? 'none' : 'block';
-                    cartItemsContainer.style.display = hasItems ? 'block' : 'none';
+                    // Toggle visibility of the container itself, not just display none
+                    cartItemsContainer.style.visibility = hasItems ? 'visible' : 'hidden';
+                    cartItemsContainer.style.position = hasItems ? 'static' : 'absolute'; // Keep layout space or remove
 
                     let subtotal = 0;
                     if (hasItems) {
@@ -1756,40 +1883,41 @@ Thank you all for your support 😎
                             setTimeout(() => {
                                 const highlightedItem = cartItemsContainer.querySelector(`.cart-item.highlight[data-id="${updatedItemId}"]`);
                                 if (highlightedItem) highlightedItem.classList.remove('highlight');
-                            }, 800);
+                            }, 800); // Match highlight animation duration
                         }
 
                     } else {
-                        cartItemsContainer.innerHTML = '';
+                        cartItemsContainer.innerHTML = ''; // Clear content if empty
                     }
 
-                    const tax = subtotal * 0.10;
+                    const tax = subtotal * 0.10; // Example 10% tax
                     const total = subtotal + tax;
                     cartSubtotalEl.textContent = formatPrice(subtotal);
                     cartTaxEl.textContent = formatPrice(tax);
                     cartTotalEl.textContent = formatPrice(total);
                     checkoutBtn.disabled = !hasItems;
 
+                    // Price pulse animation
                     if (updatedItemId && !isReducedMotion) {
-                        cartTotalEl.style.transition = 'none';
+                        cartTotalEl.style.transition = 'none'; // Disable transition for immediate scale
                         cartTotalEl.style.transform = 'scale(1.03)';
-                        cartTotalEl.style.color = 'var(--primary)';
+                        cartTotalEl.style.color = 'var(--primary)'; // Highlight color
                         setTimeout(() => {
-                            cartTotalEl.style.transition = 'transform 0.3s ease, color var(--transition-speed) ease';
+                            cartTotalEl.style.transition = 'transform 0.3s ease, color var(--transition-speed) ease'; // Re-enable transitions
                             cartTotalEl.style.transform = 'scale(1)';
-                            cartTotalEl.style.color = '';
+                            cartTotalEl.style.color = ''; // Reset color
                         }, 150);
                     } else {
-                         cartTotalEl.style.transition = 'color var(--transition-speed) ease';
+                         cartTotalEl.style.transition = 'color var(--transition-speed) ease'; // Ensure default transition is set
                     }
                 }
             };
 
-             const flyToCart = (startElement) => {
+            const flyToCart = (startElement) => {
                  if (isReducedMotion || !startElement) return;
 
                  const cartIcon = document.querySelector('#mainNavbar .fa-shopping-bag');
-                 if (!cartIcon) return;
+                 if (!cartIcon) return; // Cart icon not found
 
                  const startRect = startElement.getBoundingClientRect();
                  const endRect = cartIcon.getBoundingClientRect();
@@ -1797,24 +1925,28 @@ Thank you all for your support 😎
                  const flyer = document.createElement('div');
                  flyer.classList.add('fly-to-cart-element');
 
+                 // Try to get image from product card for the flyer
                  const productCard = startElement.closest('.product-card');
                  const imgElement = productCard?.querySelector('.product-image');
-                 let flyerSize = 20;
+                 let flyerSize = 20; // Default size
 
                  if (imgElement && imgElement.src && !imgElement.src.includes('placeholder')) {
                      flyer.style.backgroundImage = `url(${imgElement.src})`;
-                     flyerSize = Math.min(startRect.width * 0.3, 40);
+                     flyerSize = Math.min(startRect.width * 0.3, 40); // Use image size, capped
                  } else {
+                     // Fallback if no image or placeholder
                      flyer.style.backgroundColor = 'var(--primary)';
                  }
 
                  flyer.style.width = `${flyerSize}px`;
                  flyer.style.height = `${flyerSize}px`;
+                 // Center flyer on the start element
                  flyer.style.top = `${startRect.top + startRect.height / 2 - flyerSize / 2}px`;
                  flyer.style.left = `${startRect.left + startRect.width / 2 - flyerSize / 2}px`;
 
                  document.body.appendChild(flyer);
 
+                 // Animate flyer to cart icon
                  requestAnimationFrame(() => {
                      const xEnd = endRect.left + endRect.width / 2 - flyerSize / 2;
                      const yEnd = endRect.top + endRect.height / 2 - flyerSize / 2;
@@ -1825,22 +1957,26 @@ Thank you all for your support 😎
                      flyer.style.opacity = '0';
                  });
 
+                 // Clean up flyer element and animate counter after animation ends
                  setTimeout(() => {
                      flyer.remove();
                      animateCartCounter();
-                 }, 800);
+                 }, 800); // Match transition duration in CSS
              };
 
-            const addItemToCart = (dataset, originatingElement) => {
-                if (!dataset || !dataset.id || !dataset.name || !dataset.price) {
-                    console.error("Missing product data for adding to cart:", dataset);
+            const addItemToCart = (productData, originatingElement) => {
+                if (!productData || !productData.id || !productData.name || !productData.price) {
+                    console.error("Missing product data for adding to cart:", productData);
                     return;
                 }
                 const product = {
-                    id: dataset.id,
-                    name: dataset.name,
-                    price: parseFloat(dataset.price),
-                    image: dataset.image || ''
+                    id: productData.id,
+                    name: productData.name,
+                    price: parseFloat(productData.price),
+                    image: productData.image || '', // Include image URL
+                    originalPrice: productData.originalPrice ? parseFloat(productData.originalPrice) : null,
+                    featured: productData.featured === 'true',
+                    brand: productData.brand || 'Unknown'
                 };
                 const existingItemIndex = cart.findIndex(item => item.id === product.id);
 
@@ -1849,18 +1985,18 @@ Thank you all for your support 😎
                 } else {
                     cart.push({ ...product, quantity: 1 });
                 }
-                updateCart(product.id);
+                updateCart(product.id); // Pass ID to highlight
 
                 if (originatingElement) {
                     flyToCart(originatingElement);
                 } else {
-                     animateCartCounter();
+                     animateCartCounter(); // Still animate counter if no visual element
                 }
             };
 
             const handleCartActions = (itemId, action) => {
                  const itemIndex = cart.findIndex(item => item.id === itemId);
-                 if (itemIndex === -1) return;
+                 if (itemIndex === -1) return; // Item not found
 
                  let itemUpdated = false;
                  switch (action) {
@@ -1871,46 +2007,226 @@ Thank you all for your support 😎
                      case 'decrease':
                          cart[itemIndex].quantity--;
                          if (cart[itemIndex].quantity <= 0) {
-                             cart.splice(itemIndex, 1);
+                             cart.splice(itemIndex, 1); // Remove item if quantity is 0 or less
                          }
                          itemUpdated = true;
                          break;
                      case 'remove':
-                         cart.splice(itemIndex, 1);
+                         cart.splice(itemIndex, 1); // Remove item directly
                          itemUpdated = true;
                          break;
                  }
-                 if (itemUpdated) updateCart(itemId);
+                 if (itemUpdated) updateCart(itemId); // Update cart UI, possibly highlighting the item
              };
 
+
+            // --- Product Rendering, Filtering, Sorting ---
+            const parseInitialProducts = () => {
+                const productElements = productGrid.querySelectorAll('.product-card-wrapper');
+                productElements.forEach(el => {
+                    const card = el.querySelector('.product-card');
+                    const features = Array.from(card.querySelectorAll('.feature-bubble')).map(bubble => ({
+                        icon: bubble.dataset.icon,
+                        text: bubble.dataset.text
+                    }));
+                    allProducts.push({
+                        id: el.dataset.id,
+                        name: el.dataset.name,
+                        price: parseFloat(el.dataset.price),
+                        originalPrice: el.dataset.originalPrice ? parseFloat(el.dataset.originalPrice) : null,
+                        image: el.dataset.image,
+                        brand: el.dataset.brand,
+                        featured: el.dataset.featured === 'true',
+                        features: features, // Store features array
+                        // Keep the original wrapper classes for re-rendering
+                        wrapperClasses: el.className.replace('d-none', '').trim(),
+                        htmlContent: card.innerHTML // Store inner HTML of the card for rendering
+                    });
+                });
+                 // Remove placeholder elements after parsing
+                 // productGrid.innerHTML = ''; // Clear initial static content if needed (optional)
+                 currentlyDisplayedProducts = [...allProducts]; // Initially display all
+                 // console.log("Parsed Products:", allProducts);
+            };
+
+            const renderProducts = (productsToRender) => {
+                if (!productGrid) return;
+                productGrid.innerHTML = ''; // Clear current grid
+
+                if (productsToRender.length === 0) {
+                    productGrid.innerHTML = `<div class="col-12 text-center py-5"><p class="text-muted fs-5">No products match your criteria.</p></div>`;
+                    return;
+                }
+
+                productsToRender.forEach((product, index) => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = product.wrapperClasses + ' product-card-wrapper'; // Re-apply original classes
+                    // Add dynamic data attributes needed for JS interactions later
+                    wrapper.dataset.id = product.id;
+                    wrapper.dataset.name = product.name;
+                    wrapper.dataset.price = product.price;
+                    wrapper.dataset.image = product.image;
+                    wrapper.dataset.brand = product.brand;
+                    if (product.originalPrice) wrapper.dataset.originalPrice = product.originalPrice;
+                    if (product.featured) wrapper.dataset.featured = 'true';
+
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.dataset.id = product.id; // Add data-id to card itself as well
+                    card.dataset.name = product.name;
+                    card.dataset.price = product.price;
+                    card.dataset.image = product.image;
+                    if (product.originalPrice) card.dataset.originalPrice = product.originalPrice;
+
+                    // Add Badges
+                    if (product.featured) {
+                        const featuredBadge = document.createElement('span');
+                        featuredBadge.className = 'product-badge badge-featured';
+                        featuredBadge.innerHTML = '<i class="fas fa-star me-1"></i> Featured';
+                        card.appendChild(featuredBadge);
+                    }
+                     if (product.originalPrice && product.originalPrice > product.price) {
+                        const saleBadge = document.createElement('span');
+                        saleBadge.className = 'product-badge badge-sale';
+                        saleBadge.innerHTML = '<i class="fas fa-tag me-1"></i> Sale';
+                        card.appendChild(saleBadge);
+                    }
+
+                    // --- Reconstruct card content more dynamically ---
+                    // Image Wrapper
+                    const imgWrapper = document.createElement('div');
+                    imgWrapper.className = 'product-image-wrapper';
+                    imgWrapper.innerHTML = `
+                        <img loading="lazy" src="${product.image}" class="product-image" alt="${product.name}">
+                        <button class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+                    `;
+                    card.appendChild(imgWrapper);
+
+                    // Product Content
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'product-content';
+                    contentDiv.innerHTML = `<h5>${product.name}</h5>`;
+                    const featureList = document.createElement('div');
+                    featureList.className = 'feature-list my-3';
+                    product.features.forEach(f => {
+                        featureList.innerHTML += `<span class="feature-bubble" data-icon="${f.icon}" data-text="${f.text}"><i class="fas ${f.icon}"></i> ${f.text}</span>`;
+                    });
+                    contentDiv.appendChild(featureList);
+                    card.appendChild(contentDiv);
+
+                    // Product Footer
+                    const footerDiv = document.createElement('div');
+                    footerDiv.className = 'product-footer';
+                    const priceContainer = document.createElement('div');
+                    priceContainer.className = 'product-price-container';
+                    priceContainer.innerHTML = `<span class="product-price">${formatPrice(product.price)}</span>`;
+                    if (product.originalPrice && product.originalPrice > product.price) {
+                        priceContainer.innerHTML += `<span class="original-price">${formatPrice(product.originalPrice)}</span>`;
+                    }
+                    footerDiv.appendChild(priceContainer);
+                    footerDiv.innerHTML += `
+                        <div class="product-actions">
+                            <button class="btn btn-sm btn-primary add-to-cart">
+                                Add <i class="fas fa-shopping-cart ms-1"></i>
+                            </button>
+                        </div>
+                    `;
+                    card.appendChild(footerDiv);
+
+                    // --- End Dynamic Reconstruction ---
+
+                    wrapper.appendChild(card);
+                    productGrid.appendChild(wrapper);
+
+                    // Add animation class for Intersection Observer
+                    wrapper.classList.add('animated-item');
+                    wrapper.dataset.delay = (index * 0.05).toString(); // Stagger animation slightly
+
+                    // Re-observe for animations if needed (if using observer per card)
+                    // cardObserver.observe(wrapper);
+                });
+                 // Re-trigger scroll animations setup for newly added items
+                 setupScrollAnimations();
+            };
+
+            const filterAndSortProducts = () => {
+                const activeFilter = filterButtonsContainer?.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+                const activeSort = sortOptionsContainer?.querySelector('.sort-option.active')?.dataset.sort || 'featured';
+
+                // 1. Filter
+                let filtered = allProducts;
+                if (activeFilter !== 'all') {
+                    filtered = allProducts.filter(p => p.brand === activeFilter);
+                }
+
+                // 2. Sort
+                let sorted = [...filtered]; // Create a copy to sort
+                switch (activeSort) {
+                    case 'price-asc':
+                        sorted.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'price-desc':
+                        sorted.sort((a, b) => b.price - a.price);
+                        break;
+                    case 'featured':
+                    default:
+                        // Sort featured items first, then by default (e.g., price or name)
+                        sorted.sort((a, b) => {
+                            if (a.featured && !b.featured) return -1;
+                            if (!a.featured && b.featured) return 1;
+                            // Optional: secondary sort (e.g., by price ascending)
+                            return a.price - b.price;
+                            // return 0; // Keep original order among non-featured/featured
+                        });
+                        break;
+                }
+
+                currentlyDisplayedProducts = sorted;
+                renderProducts(currentlyDisplayedProducts);
+            };
+
+
+            // --- Quick View Modal ---
             const showQuickView = (productCard) => {
                 if (!quickViewModalInstance || !productCard?.dataset) return;
 
                 const data = productCard.dataset;
-                const price = parseFloat(data.price || 0);
+                const productId = data.id;
+                // Find full product data from our allProducts array
+                const product = allProducts.find(p => p.id === productId);
+                 if (!product) {
+                     console.error("Product data not found for Quick View:", productId);
+                     return;
+                 }
 
-                qvImage.src = data.image || 'https://via.placeholder.com/400x400.png?text=Image+Not+Found';
-                qvImage.alt = data.name || 'Product Image';
-                qvName.textContent = data.name || 'Product Name';
-                qvId.textContent = data.id || 'N/A';
-                qvPrice.textContent = formatPrice(price);
+                qvImage.src = product.image || 'https://via.placeholder.com/400x400.png?text=Image+Not+Found';
+                qvImage.alt = product.name || 'Product Image';
+                qvName.textContent = product.name || 'Product Name';
+                qvId.textContent = product.id || 'N/A';
+                qvPrice.textContent = formatPrice(product.price);
 
-                qvFeatures.innerHTML = '';
-                const featureBubbles = productCard.querySelectorAll('.feature-bubble');
-                featureBubbles.forEach(bubble => {
-                    const iconClass = bubble.dataset.icon || 'fa-check-circle';
-                    const text = bubble.dataset.text || bubble.textContent.trim();
-                    if (text) {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<i class="fas ${iconClass} fa-fw"></i> ${text}`;
-                        qvFeatures.appendChild(li);
-                    }
+                 // Handle original price display
+                if (product.originalPrice && product.originalPrice > product.price) {
+                    qvOriginalPrice.textContent = formatPrice(product.originalPrice);
+                    qvOriginalPrice.style.display = 'inline';
+                } else {
+                    qvOriginalPrice.style.display = 'none';
+                }
+
+                qvFeatures.innerHTML = ''; // Clear previous features
+                 product.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas ${feature.icon} fa-fw"></i> ${feature.text}`;
+                    qvFeatures.appendChild(li);
                 });
 
-                qvAddToCartBtn.dataset.id = data.id;
-                qvAddToCartBtn.dataset.name = data.name;
-                qvAddToCartBtn.dataset.price = data.price;
-                qvAddToCartBtn.dataset.image = data.image;
+                // Set data attributes on the quick view Add to Cart button
+                qvAddToCartBtn.dataset.id = product.id;
+                qvAddToCartBtn.dataset.name = product.name;
+                qvAddToCartBtn.dataset.price = product.price;
+                qvAddToCartBtn.dataset.image = product.image;
+                if (product.originalPrice) qvAddToCartBtn.dataset.originalPrice = product.originalPrice;
+
 
                  if(quickViewModalEl) quickViewModalEl.setAttribute('aria-labelledby', 'quickViewName');
 
@@ -1922,15 +2238,17 @@ Thank you all for your support 😎
 
                  quickViewModalEl.addEventListener('shown.bs.modal', () => {
                      quickViewModalEl.classList.add('shown');
+                     // Stagger animation of details
                      quickViewModalEl.querySelectorAll('.quick-view-details > *').forEach((el, index) => {
                          el.style.transitionDelay = `${0.1 + index * 0.05}s`;
                      });
                      const img = quickViewModalEl.querySelector('.quick-view-image img');
-                     if(img) img.style.transitionDelay = '0s';
+                     if(img) img.style.transitionDelay = '0s'; // Image fades in first
                  });
 
                  quickViewModalEl.addEventListener('hide.bs.modal', () => {
                      quickViewModalEl.classList.remove('shown');
+                     // Reset styles for next time
                      quickViewModalEl.querySelectorAll('.quick-view-details > *, .quick-view-image img').forEach(el => {
                          el.style.opacity = '';
                          el.style.transform = '';
@@ -1939,20 +2257,29 @@ Thank you all for your support 😎
                  });
             };
 
+            // --- Scroll Animations ---
+             let cardObserver; // Define observer instance variable
             const setupScrollAnimations = () => {
-                if (isReducedMotion) {
-                    document.querySelectorAll('.animated-item, .product-card-wrapper, .footer-section').forEach(el => {
-                        el.classList.add('is-visible');
-                        el.style.opacity = 1;
-                        el.style.transform = 'none';
-                         if (el.classList.contains('slide-up')) el.classList.add('slide-up-active');
-                         if (el.classList.contains('zoom-in')) el.classList.add('zoom-in-active');
-                    });
+                // General animated items observer
+                const animatedItems = document.querySelectorAll('.animated-item:not(.product-card-wrapper):not(.is-visible)');
+                 if (isReducedMotion) {
+                    animatedItems.forEach(el => {
+                         el.classList.add('is-visible');
+                         el.style.opacity = 1;
+                         el.style.transform = 'none';
+                          if (el.classList.contains('slide-up')) el.classList.add('slide-up-active');
+                          if (el.classList.contains('zoom-in')) el.classList.add('zoom-in-active');
+                     });
+                     // Also make sure initially rendered products are visible without animation
+                     document.querySelectorAll('.product-card-wrapper').forEach(el => {
+                          el.classList.add('is-visible');
+                          el.style.opacity = 1;
+                          el.style.transform = 'none';
+                     });
                     return;
                 }
 
                 const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-
                 const observerCallback = (entries, observer) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -1961,33 +2288,34 @@ Thank you all for your support 😎
                                 entry.target.classList.add('is-visible');
                                 if (entry.target.classList.contains('slide-up')) entry.target.classList.add('slide-up-active');
                                 if (entry.target.classList.contains('zoom-in')) entry.target.classList.add('zoom-in-active');
-                                if (entry.target.classList.contains('footer-section')) entry.target.classList.add('is-visible');
-
+                                if (entry.target.classList.contains('footer-section')) entry.target.classList.add('is-visible'); // Footer specific visibility? Okay.
                             }, delay);
                             observer.unobserve(entry.target);
                         }
                     });
                 };
-
                 const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-                document.querySelectorAll('.animated-item, .footer-section').forEach(item => scrollObserver.observe(item));
+                animatedItems.forEach(item => scrollObserver.observe(item));
 
+                 // Product card observer (re-initialize if it exists to unobserve old ones)
+                 if (cardObserver) cardObserver.disconnect();
                  const cardObserverOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
                  const cardObserverCallback = (entries, observer) => {
-                     let delay = 0;
                      entries.forEach(entry => {
                          if (entry.isIntersecting) {
-                             entry.target.style.transitionDelay = `${delay}s`;
-                             entry.target.classList.add('is-visible');
-                             delay += 0.1;
+                             const delay = parseFloat(entry.target.dataset.delay || 0) * 1000; // Use delay from render function
+                             setTimeout(() => {
+                                entry.target.classList.add('is-visible');
+                             }, delay);
                              observer.unobserve(entry.target);
                          }
                      });
                  };
-                 const cardObserver = new IntersectionObserver(cardObserverCallback, cardObserverOptions);
-                 document.querySelectorAll('.product-card-wrapper').forEach(wrapper => cardObserver.observe(wrapper));
+                 cardObserver = new IntersectionObserver(cardObserverCallback, cardObserverOptions);
+                 document.querySelectorAll('.product-card-wrapper:not(.is-visible)').forEach(wrapper => cardObserver.observe(wrapper));
             };
 
+            // --- Newsletter Form ---
              const setupNewsletterForm = () => {
                  if (!newsletterButton) return;
 
@@ -2001,33 +2329,42 @@ Thank you all for your support 😎
                          this.classList.add('btn-success');
                          this.disabled = true;
                          emailInput.disabled = true;
-                         emailInput.value = '';
+                         emailInput.value = ''; // Clear input
+                         // Maybe show a success message (optional)
                      } else if (emailInput) {
-                         emailInput.reportValidity();
+                         emailInput.reportValidity(); // Show browser validation message
                      }
                  });
              };
 
+            // --- Footer Year ---
              const updateFooterYear = () => {
                  if (currentYearEl) {
                      currentYearEl.textContent = new Date().getFullYear();
                  }
              };
 
+            // --- Global Event Listener (Delegation) ---
             const setupGlobalEventListener = () => {
                 document.body.addEventListener('click', (e) => {
                     const target = e.target;
 
+                    // Add to Cart Button (on product card)
                     const addToCartButton = target.closest('.add-to-cart');
                     if (addToCartButton) {
                         e.preventDefault();
-                        const productCard = addToCartButton.closest('.product-card');
-                        if (productCard?.dataset) {
-                            addItemToCart(productCard.dataset, addToCartButton);
+                        const productWrapper = addToCartButton.closest('.product-card-wrapper');
+                        if (productWrapper?.dataset) {
+                            // Find full product data based on ID
+                            const productToAdd = allProducts.find(p => p.id === productWrapper.dataset.id);
+                            if (productToAdd) {
+                                addItemToCart(productToAdd, addToCartButton);
+                            }
                         }
                         return;
                     }
 
+                    // Quick View Button
                     const quickViewButton = target.closest('.quick-view-btn');
                     if (quickViewButton) {
                         e.preventDefault();
@@ -2038,15 +2375,21 @@ Thank you all for your support 😎
                         return;
                     }
 
+                    // Add to Cart Button (in Quick View Modal)
                     const qvAddToCartButton = target.closest('.quick-view-add-to-cart');
                     if (qvAddToCartButton && qvAddToCartButton.dataset.id) {
                         e.preventDefault();
-                        const qvImageElement = document.getElementById('quickViewImage');
-                         addItemToCart(qvAddToCartButton.dataset, qvImageElement);
+                        const qvImageElement = document.getElementById('quickViewImage'); // Element for fly animation start
+                        // Find full product data based on ID
+                         const productToAdd = allProducts.find(p => p.id === qvAddToCartButton.dataset.id);
+                         if (productToAdd) {
+                            addItemToCart(productToAdd, qvImageElement);
+                         }
                         if (quickViewModalInstance) quickViewModalInstance.hide();
                         return;
                     }
 
+                    // Cart Item Actions (Increase, Decrease, Remove)
                     const cartActionButton = target.closest('.increase-item, .decrease-item, .remove-item');
                     if (cartItemsContainer && cartActionButton) {
                          const itemId = cartActionButton.dataset.id;
@@ -2059,24 +2402,48 @@ Thank you all for your support 😎
                          return;
                     }
 
-                    const filterButton = target.closest('.filter-controls .btn:not(.dropdown-toggle)');
-                    if (filterButton) {
-                        document.querySelectorAll('.filter-controls .btn.active').forEach(btn => btn.classList.remove('active'));
+                     // Filter Buttons
+                    const filterButton = target.closest('.filter-btn');
+                    if (filterButton && filterButtonsContainer) {
+                        e.preventDefault();
+                        filterButtonsContainer.querySelectorAll('.filter-btn.active').forEach(btn => btn.classList.remove('active'));
                         filterButton.classList.add('active');
+                        filterAndSortProducts(); // Re-render based on new filter
                         return;
                     }
+
+                     // Sort Options
+                     const sortOption = target.closest('.sort-option');
+                    if (sortOption && sortOptionsContainer && sortDropdown) {
+                        e.preventDefault();
+                        sortOptionsContainer.querySelectorAll('.sort-option.active').forEach(opt => opt.classList.remove('active'));
+                        sortOption.classList.add('active');
+                        sortDropdown.textContent = `Sort by: ${sortOption.textContent}`; // Update dropdown button text
+                        filterAndSortProducts(); // Re-render based on new sort
+                        return;
+                    }
+
                 });
             };
 
-            setupTheme();
-            setupNavbarScroll();
-            setupHeroTextAnimation();
-            updateCart();
-            setupQuickViewModalEvents();
-            setupScrollAnimations();
-            setupNewsletterForm();
-            updateFooterYear();
-            setupGlobalEventListener();
+            // --- Initialization ---
+            const initializeApp = () => {
+                parseInitialProducts();
+                setupTheme();
+                setupNavbarScroll();
+                setupHeroTextAnimation();
+                updateCart(); // Initial cart state update
+                filterAndSortProducts(); // Initial render of products based on default filter/sort
+                setupQuickViewModalEvents();
+                // setupScrollAnimations(); // Called initially within renderProducts
+                setupNewsletterForm();
+                updateFooterYear();
+                setupGlobalEventListener();
+
+                console.log("NextGen Mobiles UI Initialized!");
+            };
+
+            initializeApp();
 
         });
     </script>
