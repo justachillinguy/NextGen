@@ -184,7 +184,7 @@ Thank you all for your support 😎
              to{transform:scale3d(1,1,1)}
         }
 
-        /* Navbar Styles */
+        
         .navbar {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
@@ -259,13 +259,13 @@ Thank you all for your support 😎
             right: -8px;
             border-radius: 50%;
             transition: transform 0.3s ease;
-            display: none; /* Initially hidden */
+            display: none; 
         }
         .cart-counter.animate-pop {
             animation: pop 0.5s ease;
         }
 
-        /* Hero Section Styles */
+        
         .hero {
             padding: 12vh 0;
             min-height: 75vh;
@@ -302,7 +302,7 @@ Thank you all for your support 😎
             margin-bottom: 1.5rem;
             text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
             color: white;
-            opacity: 0; /* Controlled by JS animation */
+            opacity: 0; 
             max-width: 80%;
             margin-left: auto;
             margin-right: auto;
@@ -312,7 +312,7 @@ Thank you all for your support 😎
             margin-bottom: 2.5rem;
             opacity: 0.9;
             font-weight: 300;
-            opacity: 0; /* Controlled by JS animation */
+            opacity: 0; 
             color: white;
             max-width: 90%;
             margin-left: auto;
@@ -334,7 +334,7 @@ Thank you all for your support 😎
             border-radius: 50px;
             transition: all var(--transition-speed) var(--transition-ease-out);
             box-shadow: 0 6px 20px rgba(255, 87, 51, 0.4);
-            opacity: 0; /* Controlled by JS animation */
+            opacity: 0; 
             transform: scale(0.8);
             animation: scale-in 0.8s ease forwards 0.8s, pulse-cta 2.5s infinite ease-in-out 1.6s;
         }
@@ -346,7 +346,7 @@ Thank you all for your support 😎
             animation-play-state: paused;
         }
 
-        /* Shape Divider Styles */
+        
         .shape-divider {
             position: relative;
             height: 100px;
@@ -368,7 +368,7 @@ Thank you all for your support 😎
             fill: var(--gray-900);
         }
 
-        /* Products Section Styles */
+        
         .products-section {
             padding: 5rem 0;
             background-color: var(--gray-100);
@@ -410,7 +410,7 @@ Thank you all for your support 😎
              opacity: 0;
              transform: translateY(50px);
              transition: opacity 0.7s var(--transition-ease-out), transform 0.7s var(--transition-ease-out);
-             display: flex; /* Ensure wrapper takes space */
+             display: flex; 
              padding-left: var(--bs-gutter-x, 0.75rem);
              padding-right: var(--bs-gutter-x, 0.75rem);
              margin-bottom: var(--bs-gutter-y, 1.5rem);
@@ -428,16 +428,16 @@ Thank you all for your support 😎
              overflow: hidden;
              display: flex;
              flex-direction: column;
-             height: 100%; /* Make card fill the wrapper */
+             height: 100%; 
              position: relative;
              transform-style: preserve-3d;
-             width: 100%; /* Ensure card takes full width of wrapper */
+             width: 100%; 
          }
          .product-card:hover {
              box-shadow: 0 20px 45px rgba(0, 85, 255, 0.2);
              transform: translateY(-10px) perspective(1000px) rotateX(3deg) rotateY(-2deg);
          }
-         /* Badges (Sale/Featured) */
+         
         .product-badge {
             position: absolute;
             top: 1rem;
@@ -503,13 +503,13 @@ Thank you all for your support 😎
              transition: all 0.5s var(--transition-ease-out);
              backdrop-filter: blur(5px);
              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-             pointer-events: none; /* Prevent interaction when hidden */
-             z-index: 2; /* Above image, below badges */
+             pointer-events: none; 
+             z-index: 2; 
          }
          .product-card:hover .quick-view-btn {
              opacity: 1;
              transform: translate(-50%, -50%) scale(1);
-             pointer-events: auto; /* Allow interaction when visible */
+             pointer-events: auto; 
          }
          .quick-view-btn:hover {
              background-color: var(--primary-dark);
@@ -529,7 +529,7 @@ Thank you all for your support 😎
              margin-bottom: 0.8rem;
              color: var(--bs-emphasis-color);
              line-height: 1.3;
-             min-height: 3.9rem; /* Reserve space for 2 lines */
+             min-height: 3.9rem; 
          }
         .feature-list {
             margin-bottom: 1rem;
@@ -611,7 +611,7 @@ Thank you all for your support 😎
             transition: background-color var(--transition-speed) ease;
         }
 
-        /* Footer Styles */
+        
         .footer {
             background-color: var(--dark);
             color: var(--gray-300);
@@ -775,7 +775,7 @@ Thank you all for your support 😎
         }
         .footer-bottom a:hover { color: white; }
 
-        /* Modal Styles */
+        
         .modal-content {
             border-radius: var(--border-radius-lg);
             border: none;
@@ -813,7 +813,7 @@ Thank you all for your support 😎
             transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
-        /* Cart Modal Specific Styles */
+        
         .cart-item {
             background-color: white;
             border-radius: var(--border-radius-md);
@@ -941,7 +941,7 @@ Thank you all for your support 😎
             background: var(--gray-300);
         }
 
-        /* Quick View Modal Styles */
+        
         #quickViewModal .modal-dialog {
             transition: transform 0.4s var(--transition-ease-out);
         }
@@ -1032,7 +1032,7 @@ Thank you all for your support 😎
             font-size: 1rem;
         }
 
-        /* Fly to Cart Animation Element */
+        
         .fly-to-cart-element {
             position: fixed;
             z-index: 1100;
@@ -1046,10 +1046,10 @@ Thank you all for your support 😎
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            border: 1px solid var(--bs-border-color); /* Added border */
+            border: 1px solid var(--bs-border-color); 
         }
 
-        /* Theme Toggle Button */
+        
         .theme-toggle-btn {
             border-radius: 50%;
             width: 40px;
@@ -1073,11 +1073,10 @@ Thank you all for your support 😎
             border-color: var(--bs-border-color);
             transform: scale(1.1) rotate(15deg);
         }
-        .theme-toggle-btn .fa-sun { display: none; } /* Hidden in light mode */
-        .theme-toggle-btn .fa-moon { display: inline-block; } /* Shown in light mode */
+        .theme-toggle-btn .fa-sun { display: none; } 
+        .theme-toggle-btn .fa-moon { display: inline-block; } 
 
-
-        /* Dark Theme Overrides */
+        
         html[data-bs-theme="dark"] body {}
         html[data-bs-theme="dark"] h1, html[data-bs-theme="dark"] h2, html[data-bs-theme="dark"] h3, html[data-bs-theme="dark"] h4, html[data-bs-theme="dark"] h5, html[data-bs-theme="dark"] h6 {}
         html[data-bs-theme="dark"] .navbar {
@@ -1257,11 +1256,11 @@ Thank you all for your support 😎
             border-color: var(--gray-500);
             color: var(--primary-light);
         }
-        html[data-bs-theme="dark"] .theme-toggle-btn .fa-sun { display: inline-block; } /* Shown in dark mode */
-        html[data-bs-theme="dark"] .theme-toggle-btn .fa-moon { display: none; } /* Hidden in dark mode */
+        html[data-bs-theme="dark"] .theme-toggle-btn .fa-sun { display: inline-block; } 
+        html[data-bs-theme="dark"] .theme-toggle-btn .fa-moon { display: none; } 
         html[data-bs-theme="dark"] .fly-to-cart-element { border-color: var(--gray-300); }
 
-        /* Responsive Adjustments */
+        
         @media (max-width: 991px) {
             body { padding-top: 75px; }
             .navbar { padding: 0.8rem 1rem; }
@@ -1300,7 +1299,7 @@ Thank you all for your support 😎
                 gap: 0.5rem;
                 padding: 1rem;
             }
-            .cart-item-image { display: none; } /* Hide image on small screens in cart */
+            .cart-item-image { display: none; } 
             .cart-item-actions {
                 width: 100%;
                 display: flex;
@@ -1323,7 +1322,7 @@ Thank you all for your support 😎
             .quick-view-original-price { font-size: 1.1rem; }
         }
 
-        /* Reduced Motion Preferences */
+        
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             *, *::before, *::after {
@@ -1372,7 +1371,7 @@ Thank you all for your support 😎
         NextGen Mobiles - Latest Smartphones
     </h1>
 
-    <!-- Navbar -->
+    
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="#">NextGen</a>
@@ -1399,15 +1398,15 @@ Thank you all for your support 😎
                         <i class="fas fa-shopping-bag"></i> <span class="cart-counter">0</span>
                     </button>
                     <button class="btn theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i> <!-- Moon icon for light theme -->
-                        <i class="fas fa-sun"></i>  <!-- Sun icon for dark theme -->
+                        <i class="fas fa-moon"></i> 
+                        <i class="fas fa-sun"></i>  
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    
     <section class="hero">
         <div class="hero-content">
             <h1 id="hero-heading" data-animation="text-reveal" style="max-width: 100%">Beyond Imagination</h1>
@@ -1416,20 +1415,20 @@ Thank you all for your support 😎
         </div>
     </section>
 
-    <!-- Shape Divider -->
+    
     <div class="shape-divider" style="background-color: var(--gray-100);"> <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="opacity: 0.7; fill: var(--bs-body-bg);"> <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
          </svg>
          <svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="opacity: 1; fill: var(--bs-body-bg);"> <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.3-37.5C438.64,32.43,512.34,53.67,583.82,73.44c71.47,19.79,148.86,21.3,218.11,15.42,69.25-5.88,138.46-24.36,209.42-37.6C1079.72,31.23,1139.69,37.39,1200,46.29V0Z"></path>
          </svg>
     </div>
 
-    <!-- Products Section -->
+    
     <section class="products-section" id="products">
         <div class="container">
             <h2 class="section-title animated-item slide-up" data-animation-type="slide-up">Meet the Lineup</h2>
             <p class="section-subtitle animated-item slide-up" data-delay="0.15">Choose the device that defines your future. Explore cutting-edge features and stunning aesthetics.</p>
 
-            <!-- Filter and Sort Controls -->
+            
             <div class="filter-controls animated-item zoom-in" data-delay="0.3">
                 <button type="button" class="btn filter-btn active" data-filter="all">All Brands</button>
                 <button type="button" class="btn filter-btn" data-filter="Samsung">Samsung</button>
@@ -1447,10 +1446,10 @@ Thank you all for your support 😎
                 </div>
             </div>
 
-            <!-- Product Grid -->
+            
             <div class="row g-4 justify-content-center" id="product-grid">
-                <!-- Product cards will be dynamically inserted here by JavaScript -->
-                <!-- Example Structure (used by JS for parsing initial data) -->
+                
+                
                 <div class="col-lg-4 col-md-6 product-card-wrapper d-none" data-id="s25ultra" data-name="Samsung Galaxy S25 Ultra" data-price="1299" data-image="https://i.ibb.co/r20q9tvx/image-removebg-preview.png" data-brand="Samsung" data-featured="true">
                     <div class="product-card">
                         <div class="product-image-wrapper">
@@ -1540,7 +1539,7 @@ Thank you all for your support 😎
         </div>
     </section>
 
-    <!-- About Section -->
+    
     <section id="about" class="py-5">
         <div class="container text-center col-lg-8">
             <h2 class="section-title animated-item slide-up">Innovating Tomorrow</h2>
@@ -1549,7 +1548,7 @@ Thank you all for your support 😎
         </div>
     </section>
 
-    <!-- Footer -->
+    
     <footer class="footer" id="contact">
         <div class="container">
             <div class="row g-5">
@@ -1604,7 +1603,7 @@ Thank you all for your support 😎
         </div>
     </footer>
 
-    <!-- Cart Modal -->
+    
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-modal="true" role="dialog">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -1613,7 +1612,7 @@ Thank you all for your support 😎
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Cart Modal"></button> </div>
                 <div class="modal-body">
                     <div id="cartItems">
-                        <!-- Cart items will be inserted here -->
+                        
                         <div class="text-center py-5" id="emptyCart">
                             <i class="fas fa-shopping-bag fa-4x text-muted mb-3"></i>
                             <h4 class="text-muted">Your bag is empty</h4>
@@ -1644,7 +1643,7 @@ Thank you all for your support 😎
         </div>
     </div>
 
-    <!-- Quick View Modal -->
+    
     <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewName" aria-modal="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content overflow-hidden">
@@ -1658,7 +1657,7 @@ Thank you all for your support 😎
                              <h3 id="quickViewName" class="modal-title">Product Name</h3>
                             <p class="text-muted"><small>SKU: <span id="quickViewId">N/A</span></small></p>
                             <ul class="quick-view-features list-unstyled" id="quickViewFeatures">
-                                <!-- Features added dynamically -->
+                                
                             </ul>
                             <div class="quick-view-price-container">
                                 <div class="quick-view-price" id="quickViewPrice">$0.00</div>
@@ -1677,7 +1676,7 @@ Thank you all for your support 😎
         </div>
     </div>
 
-    <!-- Scripts -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
@@ -1686,10 +1685,10 @@ Thank you all for your support 😎
             const isReducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
             const htmlElement = document.documentElement;
             let cart = [];
-            let allProducts = []; // Holds all product data parsed from HTML
-            let currentlyDisplayedProducts = []; // Holds filtered/sorted products for rendering
+            let allProducts = []; 
+            let currentlyDisplayedProducts = []; 
 
-            // --- DOM Element Selectors ---
+            
             const themeToggleButton = document.getElementById('theme-toggle-btn');
             const navbar = document.getElementById('mainNavbar');
             const cartCounters = document.querySelectorAll('.cart-counter');
@@ -1718,11 +1717,11 @@ Thank you all for your support 😎
             const sortDropdown = document.getElementById('sortDropdown');
             const sortOptionsContainer = document.querySelector('.dropdown-menu[aria-labelledby="sortDropdown"]');
 
-            // --- Utility Functions ---
+            
             const formatPrice = (price) => `$${Number(price).toFixed(2)}`;
             const getPreferredTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-            // --- Theme Handling ---
+            
             const setTheme = (theme) => {
                 htmlElement.setAttribute('data-bs-theme', theme);
                 if (themeToggleButton) {
@@ -1758,17 +1757,17 @@ Thank you all for your support 😎
                 });
             };
 
-            // --- Navbar Scroll Effect ---
+            
             const setupNavbarScroll = () => {
                 if (!navbar || isReducedMotion) return;
                 const handleScroll = () => {
                     navbar.classList.toggle('scrolled', window.scrollY > 50);
                 };
                 window.addEventListener('scroll', handleScroll, { passive: true });
-                handleScroll(); // Initial check
+                handleScroll(); 
             };
 
-            // --- Hero Text Animation ---
+            
             const splitTextAndWrap = (element) => {
                 if (!element || isReducedMotion) return;
                 const text = element.textContent.trim();
@@ -1781,17 +1780,17 @@ Thank you all for your support 😎
                     }
                 });
                 element.innerHTML = wrappedHTML.trim();
-                 element.style.opacity = 1; // Make parent visible once content is wrapped
+                 element.style.opacity = 1; 
             };
 
             const animateTextChars = (selector, baseDelay = 0) => {
                 const parent = document.querySelector(selector);
                 if (!parent || isReducedMotion) {
-                     if(parent) parent.style.opacity = 1; // Ensure visibility if no animation
+                     if(parent) parent.style.opacity = 1; 
                      return;
                 }
                 const chars = parent.querySelectorAll('.char');
-                 if (!chars.length) { // Fallback if wrapping failed
+                 if (!chars.length) { 
                      parent.style.opacity = 1;
                      return;
                  }
@@ -1815,23 +1814,23 @@ Thank you all for your support 😎
                      setTimeout(() => {
                          if (heroHeading) animateTextChars('#hero-heading');
                          if (heroSubheading) animateTextChars('#hero-subheading', parseFloat(heroSubheading.dataset.delay || 0.3));
-                         // CTA animation is handled by CSS keyframes, just ensure parent is visible
+                         
                          if(heroCta && heroCta.parentElement) heroCta.parentElement.style.opacity = 1;
                      }, 100);
                  } else {
-                      // If reduced motion, just make elements visible immediately
+                      
                       if(heroHeading) heroHeading.style.opacity = 1;
                       if(heroSubheading) heroSubheading.style.opacity = 1;
                       if(heroCta) heroCta.style.opacity = 1;
                  }
              };
 
-            // --- Cart Functionality ---
+            
             const animateCartCounter = () => {
                 if (isReducedMotion) return;
                 cartCounters.forEach(counter => {
                     counter.classList.remove('animate-pop');
-                    void counter.offsetWidth; // Trigger reflow
+                    void counter.offsetWidth; 
                     counter.classList.add('animate-pop');
                 });
             };
@@ -1847,9 +1846,9 @@ Thank you all for your support 😎
                 if (cartItemsContainer && emptyCartMsg && cartSubtotalEl && cartTaxEl && cartTotalEl && checkoutBtn) {
                     const hasItems = cart.length > 0;
                     emptyCartMsg.style.display = hasItems ? 'none' : 'block';
-                    // Toggle visibility of the container itself, not just display none
+                    
                     cartItemsContainer.style.visibility = hasItems ? 'visible' : 'hidden';
-                    cartItemsContainer.style.position = hasItems ? 'static' : 'absolute'; // Keep layout space or remove
+                    cartItemsContainer.style.position = hasItems ? 'static' : 'absolute'; 
 
                     let subtotal = 0;
                     if (hasItems) {
@@ -1883,32 +1882,32 @@ Thank you all for your support 😎
                             setTimeout(() => {
                                 const highlightedItem = cartItemsContainer.querySelector(`.cart-item.highlight[data-id="${updatedItemId}"]`);
                                 if (highlightedItem) highlightedItem.classList.remove('highlight');
-                            }, 800); // Match highlight animation duration
+                            }, 800); 
                         }
 
                     } else {
-                        cartItemsContainer.innerHTML = ''; // Clear content if empty
+                        cartItemsContainer.innerHTML = ''; 
                     }
 
-                    const tax = subtotal * 0.10; // Example 10% tax
+                    const tax = subtotal * 0.10; 
                     const total = subtotal + tax;
                     cartSubtotalEl.textContent = formatPrice(subtotal);
                     cartTaxEl.textContent = formatPrice(tax);
                     cartTotalEl.textContent = formatPrice(total);
                     checkoutBtn.disabled = !hasItems;
 
-                    // Price pulse animation
+                    
                     if (updatedItemId && !isReducedMotion) {
-                        cartTotalEl.style.transition = 'none'; // Disable transition for immediate scale
+                        cartTotalEl.style.transition = 'none'; 
                         cartTotalEl.style.transform = 'scale(1.03)';
-                        cartTotalEl.style.color = 'var(--primary)'; // Highlight color
+                        cartTotalEl.style.color = 'var(--primary)'; 
                         setTimeout(() => {
-                            cartTotalEl.style.transition = 'transform 0.3s ease, color var(--transition-speed) ease'; // Re-enable transitions
+                            cartTotalEl.style.transition = 'transform 0.3s ease, color var(--transition-speed) ease'; 
                             cartTotalEl.style.transform = 'scale(1)';
-                            cartTotalEl.style.color = ''; // Reset color
+                            cartTotalEl.style.color = ''; 
                         }, 150);
                     } else {
-                         cartTotalEl.style.transition = 'color var(--transition-speed) ease'; // Ensure default transition is set
+                         cartTotalEl.style.transition = 'color var(--transition-speed) ease'; 
                     }
                 }
             };
@@ -1917,7 +1916,7 @@ Thank you all for your support 😎
                  if (isReducedMotion || !startElement) return;
 
                  const cartIcon = document.querySelector('#mainNavbar .fa-shopping-bag');
-                 if (!cartIcon) return; // Cart icon not found
+                 if (!cartIcon) return; 
 
                  const startRect = startElement.getBoundingClientRect();
                  const endRect = cartIcon.getBoundingClientRect();
@@ -1925,28 +1924,28 @@ Thank you all for your support 😎
                  const flyer = document.createElement('div');
                  flyer.classList.add('fly-to-cart-element');
 
-                 // Try to get image from product card for the flyer
+                 
                  const productCard = startElement.closest('.product-card');
                  const imgElement = productCard?.querySelector('.product-image');
-                 let flyerSize = 20; // Default size
+                 let flyerSize = 20; 
 
                  if (imgElement && imgElement.src && !imgElement.src.includes('placeholder')) {
                      flyer.style.backgroundImage = `url(${imgElement.src})`;
-                     flyerSize = Math.min(startRect.width * 0.3, 40); // Use image size, capped
+                     flyerSize = Math.min(startRect.width * 0.3, 40); 
                  } else {
-                     // Fallback if no image or placeholder
+                     
                      flyer.style.backgroundColor = 'var(--primary)';
                  }
 
                  flyer.style.width = `${flyerSize}px`;
                  flyer.style.height = `${flyerSize}px`;
-                 // Center flyer on the start element
+                 
                  flyer.style.top = `${startRect.top + startRect.height / 2 - flyerSize / 2}px`;
                  flyer.style.left = `${startRect.left + startRect.width / 2 - flyerSize / 2}px`;
 
                  document.body.appendChild(flyer);
 
-                 // Animate flyer to cart icon
+                 
                  requestAnimationFrame(() => {
                      const xEnd = endRect.left + endRect.width / 2 - flyerSize / 2;
                      const yEnd = endRect.top + endRect.height / 2 - flyerSize / 2;
@@ -1957,11 +1956,11 @@ Thank you all for your support 😎
                      flyer.style.opacity = '0';
                  });
 
-                 // Clean up flyer element and animate counter after animation ends
+                 
                  setTimeout(() => {
                      flyer.remove();
                      animateCartCounter();
-                 }, 800); // Match transition duration in CSS
+                 }, 800); 
              };
 
             const addItemToCart = (productData, originatingElement) => {
@@ -1973,7 +1972,7 @@ Thank you all for your support 😎
                     id: productData.id,
                     name: productData.name,
                     price: parseFloat(productData.price),
-                    image: productData.image || '', // Include image URL
+                    image: productData.image || '', 
                     originalPrice: productData.originalPrice ? parseFloat(productData.originalPrice) : null,
                     featured: productData.featured === 'true',
                     brand: productData.brand || 'Unknown'
@@ -1985,18 +1984,18 @@ Thank you all for your support 😎
                 } else {
                     cart.push({ ...product, quantity: 1 });
                 }
-                updateCart(product.id); // Pass ID to highlight
+                updateCart(product.id); 
 
                 if (originatingElement) {
                     flyToCart(originatingElement);
                 } else {
-                     animateCartCounter(); // Still animate counter if no visual element
+                     animateCartCounter(); 
                 }
             };
 
             const handleCartActions = (itemId, action) => {
                  const itemIndex = cart.findIndex(item => item.id === itemId);
-                 if (itemIndex === -1) return; // Item not found
+                 if (itemIndex === -1) return; 
 
                  let itemUpdated = false;
                  switch (action) {
@@ -2007,20 +2006,19 @@ Thank you all for your support 😎
                      case 'decrease':
                          cart[itemIndex].quantity--;
                          if (cart[itemIndex].quantity <= 0) {
-                             cart.splice(itemIndex, 1); // Remove item if quantity is 0 or less
+                             cart.splice(itemIndex, 1); 
                          }
                          itemUpdated = true;
                          break;
                      case 'remove':
-                         cart.splice(itemIndex, 1); // Remove item directly
+                         cart.splice(itemIndex, 1); 
                          itemUpdated = true;
                          break;
                  }
-                 if (itemUpdated) updateCart(itemId); // Update cart UI, possibly highlighting the item
+                 if (itemUpdated) updateCart(itemId); 
              };
 
-
-            // --- Product Rendering, Filtering, Sorting ---
+            
             const parseInitialProducts = () => {
                 const productElements = productGrid.querySelectorAll('.product-card-wrapper');
                 productElements.forEach(el => {
@@ -2037,21 +2035,21 @@ Thank you all for your support 😎
                         image: el.dataset.image,
                         brand: el.dataset.brand,
                         featured: el.dataset.featured === 'true',
-                        features: features, // Store features array
-                        // Keep the original wrapper classes for re-rendering
+                        features: features, 
+                        
                         wrapperClasses: el.className.replace('d-none', '').trim(),
-                        htmlContent: card.innerHTML // Store inner HTML of the card for rendering
+                        htmlContent: card.innerHTML 
                     });
                 });
-                 // Remove placeholder elements after parsing
-                 // productGrid.innerHTML = ''; // Clear initial static content if needed (optional)
-                 currentlyDisplayedProducts = [...allProducts]; // Initially display all
-                 // console.log("Parsed Products:", allProducts);
+                 
+                 
+                 currentlyDisplayedProducts = [...allProducts]; 
+                 
             };
 
             const renderProducts = (productsToRender) => {
                 if (!productGrid) return;
-                productGrid.innerHTML = ''; // Clear current grid
+                productGrid.innerHTML = ''; 
 
                 if (productsToRender.length === 0) {
                     productGrid.innerHTML = `<div class="col-12 text-center py-5"><p class="text-muted fs-5">No products match your criteria.</p></div>`;
@@ -2060,8 +2058,8 @@ Thank you all for your support 😎
 
                 productsToRender.forEach((product, index) => {
                     const wrapper = document.createElement('div');
-                    wrapper.className = product.wrapperClasses + ' product-card-wrapper'; // Re-apply original classes
-                    // Add dynamic data attributes needed for JS interactions later
+                    wrapper.className = product.wrapperClasses + ' product-card-wrapper'; 
+                    
                     wrapper.dataset.id = product.id;
                     wrapper.dataset.name = product.name;
                     wrapper.dataset.price = product.price;
@@ -2072,13 +2070,13 @@ Thank you all for your support 😎
 
                     const card = document.createElement('div');
                     card.className = 'product-card';
-                    card.dataset.id = product.id; // Add data-id to card itself as well
+                    card.dataset.id = product.id; 
                     card.dataset.name = product.name;
                     card.dataset.price = product.price;
                     card.dataset.image = product.image;
                     if (product.originalPrice) card.dataset.originalPrice = product.originalPrice;
 
-                    // Add Badges
+                    
                     if (product.featured) {
                         const featuredBadge = document.createElement('span');
                         featuredBadge.className = 'product-badge badge-featured';
@@ -2092,8 +2090,8 @@ Thank you all for your support 😎
                         card.appendChild(saleBadge);
                     }
 
-                    // --- Reconstruct card content more dynamically ---
-                    // Image Wrapper
+                    
+                    
                     const imgWrapper = document.createElement('div');
                     imgWrapper.className = 'product-image-wrapper';
                     imgWrapper.innerHTML = `
@@ -2102,7 +2100,7 @@ Thank you all for your support 😎
                     `;
                     card.appendChild(imgWrapper);
 
-                    // Product Content
+                    
                     const contentDiv = document.createElement('div');
                     contentDiv.className = 'product-content';
                     contentDiv.innerHTML = `<h5>${product.name}</h5>`;
@@ -2114,7 +2112,7 @@ Thank you all for your support 😎
                     contentDiv.appendChild(featureList);
                     card.appendChild(contentDiv);
 
-                    // Product Footer
+                    
                     const footerDiv = document.createElement('div');
                     footerDiv.className = 'product-footer';
                     const priceContainer = document.createElement('div');
@@ -2133,19 +2131,19 @@ Thank you all for your support 😎
                     `;
                     card.appendChild(footerDiv);
 
-                    // --- End Dynamic Reconstruction ---
+                    
 
                     wrapper.appendChild(card);
                     productGrid.appendChild(wrapper);
 
-                    // Add animation class for Intersection Observer
+                    
                     wrapper.classList.add('animated-item');
-                    wrapper.dataset.delay = (index * 0.05).toString(); // Stagger animation slightly
+                    wrapper.dataset.delay = (index * 0.05).toString(); 
 
-                    // Re-observe for animations if needed (if using observer per card)
-                    // cardObserver.observe(wrapper);
+                    
+                    
                 });
-                 // Re-trigger scroll animations setup for newly added items
+                 
                  setupScrollAnimations();
             };
 
@@ -2153,14 +2151,14 @@ Thank you all for your support 😎
                 const activeFilter = filterButtonsContainer?.querySelector('.filter-btn.active')?.dataset.filter || 'all';
                 const activeSort = sortOptionsContainer?.querySelector('.sort-option.active')?.dataset.sort || 'featured';
 
-                // 1. Filter
+                
                 let filtered = allProducts;
                 if (activeFilter !== 'all') {
                     filtered = allProducts.filter(p => p.brand === activeFilter);
                 }
 
-                // 2. Sort
-                let sorted = [...filtered]; // Create a copy to sort
+                
+                let sorted = [...filtered]; 
                 switch (activeSort) {
                     case 'price-asc':
                         sorted.sort((a, b) => a.price - b.price);
@@ -2170,13 +2168,13 @@ Thank you all for your support 😎
                         break;
                     case 'featured':
                     default:
-                        // Sort featured items first, then by default (e.g., price or name)
+                        
                         sorted.sort((a, b) => {
                             if (a.featured && !b.featured) return -1;
                             if (!a.featured && b.featured) return 1;
-                            // Optional: secondary sort (e.g., by price ascending)
+                            
                             return a.price - b.price;
-                            // return 0; // Keep original order among non-featured/featured
+                            
                         });
                         break;
                 }
@@ -2185,14 +2183,13 @@ Thank you all for your support 😎
                 renderProducts(currentlyDisplayedProducts);
             };
 
-
-            // --- Quick View Modal ---
+            
             const showQuickView = (productCard) => {
                 if (!quickViewModalInstance || !productCard?.dataset) return;
 
                 const data = productCard.dataset;
                 const productId = data.id;
-                // Find full product data from our allProducts array
+                
                 const product = allProducts.find(p => p.id === productId);
                  if (!product) {
                      console.error("Product data not found for Quick View:", productId);
@@ -2205,7 +2202,7 @@ Thank you all for your support 😎
                 qvId.textContent = product.id || 'N/A';
                 qvPrice.textContent = formatPrice(product.price);
 
-                 // Handle original price display
+                 
                 if (product.originalPrice && product.originalPrice > product.price) {
                     qvOriginalPrice.textContent = formatPrice(product.originalPrice);
                     qvOriginalPrice.style.display = 'inline';
@@ -2213,20 +2210,19 @@ Thank you all for your support 😎
                     qvOriginalPrice.style.display = 'none';
                 }
 
-                qvFeatures.innerHTML = ''; // Clear previous features
+                qvFeatures.innerHTML = ''; 
                  product.features.forEach(feature => {
                     const li = document.createElement('li');
                     li.innerHTML = `<i class="fas ${feature.icon} fa-fw"></i> ${feature.text}`;
                     qvFeatures.appendChild(li);
                 });
 
-                // Set data attributes on the quick view Add to Cart button
+                
                 qvAddToCartBtn.dataset.id = product.id;
                 qvAddToCartBtn.dataset.name = product.name;
                 qvAddToCartBtn.dataset.price = product.price;
                 qvAddToCartBtn.dataset.image = product.image;
                 if (product.originalPrice) qvAddToCartBtn.dataset.originalPrice = product.originalPrice;
-
 
                  if(quickViewModalEl) quickViewModalEl.setAttribute('aria-labelledby', 'quickViewName');
 
@@ -2238,17 +2234,17 @@ Thank you all for your support 😎
 
                  quickViewModalEl.addEventListener('shown.bs.modal', () => {
                      quickViewModalEl.classList.add('shown');
-                     // Stagger animation of details
+                     
                      quickViewModalEl.querySelectorAll('.quick-view-details > *').forEach((el, index) => {
                          el.style.transitionDelay = `${0.1 + index * 0.05}s`;
                      });
                      const img = quickViewModalEl.querySelector('.quick-view-image img');
-                     if(img) img.style.transitionDelay = '0s'; // Image fades in first
+                     if(img) img.style.transitionDelay = '0s'; 
                  });
 
                  quickViewModalEl.addEventListener('hide.bs.modal', () => {
                      quickViewModalEl.classList.remove('shown');
-                     // Reset styles for next time
+                     
                      quickViewModalEl.querySelectorAll('.quick-view-details > *, .quick-view-image img').forEach(el => {
                          el.style.opacity = '';
                          el.style.transform = '';
@@ -2257,10 +2253,10 @@ Thank you all for your support 😎
                  });
             };
 
-            // --- Scroll Animations ---
-             let cardObserver; // Define observer instance variable
+            
+             let cardObserver; 
             const setupScrollAnimations = () => {
-                // General animated items observer
+                
                 const animatedItems = document.querySelectorAll('.animated-item:not(.product-card-wrapper):not(.is-visible)');
                  if (isReducedMotion) {
                     animatedItems.forEach(el => {
@@ -2270,7 +2266,7 @@ Thank you all for your support 😎
                           if (el.classList.contains('slide-up')) el.classList.add('slide-up-active');
                           if (el.classList.contains('zoom-in')) el.classList.add('zoom-in-active');
                      });
-                     // Also make sure initially rendered products are visible without animation
+                     
                      document.querySelectorAll('.product-card-wrapper').forEach(el => {
                           el.classList.add('is-visible');
                           el.style.opacity = 1;
@@ -2288,7 +2284,7 @@ Thank you all for your support 😎
                                 entry.target.classList.add('is-visible');
                                 if (entry.target.classList.contains('slide-up')) entry.target.classList.add('slide-up-active');
                                 if (entry.target.classList.contains('zoom-in')) entry.target.classList.add('zoom-in-active');
-                                if (entry.target.classList.contains('footer-section')) entry.target.classList.add('is-visible'); // Footer specific visibility? Okay.
+                                if (entry.target.classList.contains('footer-section')) entry.target.classList.add('is-visible'); 
                             }, delay);
                             observer.unobserve(entry.target);
                         }
@@ -2297,13 +2293,13 @@ Thank you all for your support 😎
                 const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
                 animatedItems.forEach(item => scrollObserver.observe(item));
 
-                 // Product card observer (re-initialize if it exists to unobserve old ones)
+                 
                  if (cardObserver) cardObserver.disconnect();
                  const cardObserverOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
                  const cardObserverCallback = (entries, observer) => {
                      entries.forEach(entry => {
                          if (entry.isIntersecting) {
-                             const delay = parseFloat(entry.target.dataset.delay || 0) * 1000; // Use delay from render function
+                             const delay = parseFloat(entry.target.dataset.delay || 0) * 1000; 
                              setTimeout(() => {
                                 entry.target.classList.add('is-visible');
                              }, delay);
@@ -2315,7 +2311,7 @@ Thank you all for your support 😎
                  document.querySelectorAll('.product-card-wrapper:not(.is-visible)').forEach(wrapper => cardObserver.observe(wrapper));
             };
 
-            // --- Newsletter Form ---
+            
              const setupNewsletterForm = () => {
                  if (!newsletterButton) return;
 
@@ -2329,33 +2325,33 @@ Thank you all for your support 😎
                          this.classList.add('btn-success');
                          this.disabled = true;
                          emailInput.disabled = true;
-                         emailInput.value = ''; // Clear input
-                         // Maybe show a success message (optional)
+                         emailInput.value = ''; 
+                         
                      } else if (emailInput) {
-                         emailInput.reportValidity(); // Show browser validation message
+                         emailInput.reportValidity(); 
                      }
                  });
              };
 
-            // --- Footer Year ---
+            
              const updateFooterYear = () => {
                  if (currentYearEl) {
                      currentYearEl.textContent = new Date().getFullYear();
                  }
              };
 
-            // --- Global Event Listener (Delegation) ---
+            
             const setupGlobalEventListener = () => {
                 document.body.addEventListener('click', (e) => {
                     const target = e.target;
 
-                    // Add to Cart Button (on product card)
+                    
                     const addToCartButton = target.closest('.add-to-cart');
                     if (addToCartButton) {
                         e.preventDefault();
                         const productWrapper = addToCartButton.closest('.product-card-wrapper');
                         if (productWrapper?.dataset) {
-                            // Find full product data based on ID
+                            
                             const productToAdd = allProducts.find(p => p.id === productWrapper.dataset.id);
                             if (productToAdd) {
                                 addItemToCart(productToAdd, addToCartButton);
@@ -2364,7 +2360,7 @@ Thank you all for your support 😎
                         return;
                     }
 
-                    // Quick View Button
+                    
                     const quickViewButton = target.closest('.quick-view-btn');
                     if (quickViewButton) {
                         e.preventDefault();
@@ -2375,12 +2371,12 @@ Thank you all for your support 😎
                         return;
                     }
 
-                    // Add to Cart Button (in Quick View Modal)
+                    
                     const qvAddToCartButton = target.closest('.quick-view-add-to-cart');
                     if (qvAddToCartButton && qvAddToCartButton.dataset.id) {
                         e.preventDefault();
-                        const qvImageElement = document.getElementById('quickViewImage'); // Element for fly animation start
-                        // Find full product data based on ID
+                        const qvImageElement = document.getElementById('quickViewImage'); 
+                        
                          const productToAdd = allProducts.find(p => p.id === qvAddToCartButton.dataset.id);
                          if (productToAdd) {
                             addItemToCart(productToAdd, qvImageElement);
@@ -2389,7 +2385,7 @@ Thank you all for your support 😎
                         return;
                     }
 
-                    // Cart Item Actions (Increase, Decrease, Remove)
+                    
                     const cartActionButton = target.closest('.increase-item, .decrease-item, .remove-item');
                     if (cartItemsContainer && cartActionButton) {
                          const itemId = cartActionButton.dataset.id;
@@ -2402,40 +2398,40 @@ Thank you all for your support 😎
                          return;
                     }
 
-                     // Filter Buttons
+                     
                     const filterButton = target.closest('.filter-btn');
                     if (filterButton && filterButtonsContainer) {
                         e.preventDefault();
                         filterButtonsContainer.querySelectorAll('.filter-btn.active').forEach(btn => btn.classList.remove('active'));
                         filterButton.classList.add('active');
-                        filterAndSortProducts(); // Re-render based on new filter
+                        filterAndSortProducts(); 
                         return;
                     }
 
-                     // Sort Options
+                     
                      const sortOption = target.closest('.sort-option');
                     if (sortOption && sortOptionsContainer && sortDropdown) {
                         e.preventDefault();
                         sortOptionsContainer.querySelectorAll('.sort-option.active').forEach(opt => opt.classList.remove('active'));
                         sortOption.classList.add('active');
-                        sortDropdown.textContent = `Sort by: ${sortOption.textContent}`; // Update dropdown button text
-                        filterAndSortProducts(); // Re-render based on new sort
+                        sortDropdown.textContent = `Sort by: ${sortOption.textContent}`; 
+                        filterAndSortProducts(); 
                         return;
                     }
 
                 });
             };
 
-            // --- Initialization ---
+            
             const initializeApp = () => {
                 parseInitialProducts();
                 setupTheme();
                 setupNavbarScroll();
                 setupHeroTextAnimation();
-                updateCart(); // Initial cart state update
-                filterAndSortProducts(); // Initial render of products based on default filter/sort
+                updateCart(); 
+                filterAndSortProducts(); 
                 setupQuickViewModalEvents();
-                // setupScrollAnimations(); // Called initially within renderProducts
+                
                 setupNewsletterForm();
                 updateFooterYear();
                 setupGlobalEventListener();
