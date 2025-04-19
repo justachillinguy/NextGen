@@ -1,4 +1,4 @@
-#📱 NextGen 🔥
+# NextGen 📱🔥
 
 NextGen is a simple UI project simulating an e-commerce platform 🛒
 
